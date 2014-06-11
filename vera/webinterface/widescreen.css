@@ -1,4 +1,4 @@
-@media (min-width:35em) { /* 35em == 560px */
+@media (min-width:65em) { /* 35em == 560px */
 	.jqm-navmenu-panel {
 		visibility: visible;
 		/* position: relative; */
