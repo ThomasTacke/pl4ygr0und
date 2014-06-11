@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Use this for hourly cron: 0 * * * * /srv/http/pl4ygr0und-vera/temper/temper.py
+# Use this for hourly cron: 0 * * * * /srv/http/pl4ygr0und/vera/temper/temper.py
 try:
     from lxml import etree
     from subprocess import check_output
@@ -7,11 +7,11 @@ try:
 except:
     print("Import failed")
 
-xml_file = '/srv/http/pl4ygr0und-vera/webinterface/temperature.xml'
+xml_file = '/srv/http/pl4ygr0und/vera/webinterface/temperature.xml'
 doc = etree.parse(xml_file)
 root = doc.getroot()
 
-tempercall = str(check_output(["/srv/http/pl4ygr0und-vera/temper/temper"]))
+tempercall = str(check_output(["/srv/http/pl4ygr0und/vera/temper/temper"]))
 temperdate = tempercall[2:12]
 tempertime = tempercall[16:21]
 tempertemp = tempercall[22:-1]

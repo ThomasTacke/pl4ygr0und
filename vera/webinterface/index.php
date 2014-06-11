@@ -73,7 +73,7 @@
 		</div>
 
 		<div data-role="footer" data-theme="b" class="jqm-footer">
-			<p>&copy; 2013 Root the Kid -- Version 0.0.1 Alpha -- <a href="https://code.google.com/p/pl4ygr0und-vera/" target="_blank">Project Site</a></p>
+			<p>&copy; 2013 Root the Kid -- Version 0.0.1 Alpha -- <a href="https://github.com/ThomasTacke/pl4ygr0und/tree/master/vera" target="_blank">Project Site</a></p>
 		</div>
 
 	</div>

@@ -1,7 +1,7 @@
 <?php
 class temperature {
 	function getLastTemperature() {
-		$xml = simplexml_load_file("/srv/http/pl4ygr0und-vera/webinterface/temperature.xml");
+		$xml = simplexml_load_file("/srv/http/pl4ygr0und/vera/webinterface/temperature.xml");
 		$result = $xml->xpath("/root/node[last()]/temperature[text()]");
 		return $result[0];
 	}
@@ -16,7 +16,7 @@ class temperature {
 		$year = date('Y');
 		$month = date('m');
 		$day = date('d');
-		$xml = simplexml_load_file("/srv/http/pl4ygr0und-vera/webinterface/temperature.xml");
+		$xml = simplexml_load_file("/srv/http/pl4ygr0und/vera/webinterface/temperature.xml");
 		//$result = $xml->xpath("/root/node[date='$year-$month-$day' and (time='00:00' or time='01:00' or time='02:00' or time='03:00' or time='04:00' or time='05:00' or time='06:00' or time='07:00' or time='08:00' or time='09:00' or time='10:00' or time='11:00' or time='12:00' or time='13:00' or time='14:00' or time='15:00' or time='16:00' or time='17:00' or time='18:00' or time='19:00' or time='20:00' or time='21:00' or time='22:00' or time='23:00')]/temperature[text()]");
 		$result = $xml->xpath("/root/node[time='00:00' or time='01:00' or time='02:00' or time='03:00' or time='04:00' or time='05:00' or time='06:00' or time='07:00' or time='08:00' or time='09:00' or time='10:00' or time='11:00' or time='12:00' or time='13:00' or time='14:00' or time='15:00' or time='16:00' or time='17:00' or time='18:00' or time='19:00' or time='20:00' or time='21:00' or time='22:00' or time='23:00']");
 		
@@ -83,7 +83,7 @@ class temperature {
 		);
 		$myPicture->drawLegend($width-70,55,$Config);
 		//$myPicture->stroke();
-		$myPicture->render("/srv/http/pl4ygr0und-vera/webinterface/temperature-graph.png");
+		$myPicture->render("/srv/http/pl4ygr0und/vera/webinterface/temperature-graph.png");
 	}
 }
 ?>
