@@ -1,0 +1,27 @@
+@media (min-width:35em) { /* 35em == 560px */
+	.jqm-navmenu-panel {
+		visibility: visible;
+		/* position: relative; */
+		float: left;
+		width: 17em;
+		transition: none !important;
+		-webkit-transform: none !important;
+		box-shadow: none;
+	}
+	.jqm-content {
+		position: absolute;
+		left: 17em;	
+	}
+	.jqm-close-menu {
+		visibility: hidden;
+	}
+	.jqm-footer {
+		position: absolute;
+		bottom: 0px;
+		left: 17em;	
+		width:100%;
+	}
+	.ui-header .ui-btn {
+		display: none;
+	}
+}

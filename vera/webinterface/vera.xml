@@ -1,0 +1,8 @@
+<root>
+	<node id="1">
+		<date>2014-05-24</date>
+		<time>11:00</time>
+		<temperature>23.967386</temperature>
+		<carbondioxide>30</carbondioxide>
+	</node>
+</root>
