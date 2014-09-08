@@ -12,8 +12,9 @@ $( document ).on( "pagecreate", "#my-page", function() {
         }
     });
 });
-/*
-$( document ).on( "mobileinit", function() {
-  $.mobile.panel.prototype.initSelector = "div.custom";
+
+// This is nessary to have the swipe on every new page
+$(document).on('pagehide', function(event, ui){
+    var page = $(event.target);
+        page.remove();
 });
-*/
