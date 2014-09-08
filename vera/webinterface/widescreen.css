@@ -24,4 +24,7 @@
 	.ui-header .ui-btn {
 		display: none;
 	}
+	.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay, .ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
+        transform: translate3d(0em, 0px, 0px);
+    }
 }
