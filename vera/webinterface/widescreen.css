@@ -24,7 +24,7 @@
 	.ui-header .ui-btn {
 		display: none;
 	}
-	.position-left { 
+	.ui-panel-position-left { 
 		left: 0em;
 	}
 	.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay, .ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
