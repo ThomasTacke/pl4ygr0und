@@ -1,19 +1,25 @@
 <!DOCTYPE html> 
 <?php
 	include("./temperature.class.php");
-	$foo = htmlspecialchars($_GET["category"]);
 	$temperature = new temperature();
+	
+	if (isset($_GET['category']))
+        $foo = htmlspecialchars($_GET["category"]);
+    else
+        $foo = NULL;
+
 ?>
 <html> 
 <head> 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>VERA -- Virtual Enlighted Room Assistent</title> 
+	<title>VERA - Virtual Enlighted Room Assistent</title> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
 	<script src="./widescreen.js"></script>
+	<script src="./upload.js"></script>
 	<link rel="stylesheet" type="text/css" href="./widescreen.css">
 </head> 
 <body> 
@@ -26,10 +32,12 @@
 
 		<div data-role="panel" data-display="overlay" class="jqm-navmenu-panel" id="nav-panel" data-theme="b">
 			<ul data-role="listview" data-theme="c" data-dividertheme="d">
-				<li data-icon="home"><a href="./">Home</a></li>
-				<li><a href="./?category=heating">Heating</a></li>
-				<li><a href="./?category=light">Light</a></li>
-				<li><a href="./?category=volume">Volume</a></li>
+				<li data-icon="home"><a href="./" <?php if($foo == NULL) { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Home</a></li>
+				<li><a href="./?category=heating" <?php if($foo == "heating") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Heating</a></li>
+				<li><a href="./?category=light" <?php if($foo == "light") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Light</a></li>
+				<li><a href="./?category=volume" <?php if($foo == "volume") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Volume</a></li>
+				<li><a href="./?category=upload" <?php if($foo == "upload") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Upload</a></li>
+				<li><a href="./?category=download" <?php if($foo == "download") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Download</a></li>
 				<li class="jqm-close-menu" data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
 			</ul>
 		</div>
@@ -39,29 +47,67 @@
 			<?php
 			switch($foo) {
 				case "heating": ?>
-			<div class="content-primary" <?php echo "style=\"display:inline\""; ?>>
-				<h2>VERA -- Heating</h2>
+			<div class="content-primary">
+				<h2>Heating</h2>
 				<p>Temperature: <?php echo $temperature->getLastTemperature() ?></p>
-				<img src="temperature-graph.png" alt="average temperature">	
+				<picture>
+					<source media="(min-width: 45em)" srcset="temperature-graph-high-res.png">
+					<source media="(min-width: 18em)" srcset="temperature-graph-med-res.png">
+					<img src="temperature-graph-low-res.png" alt="The president giving an award.">
+				</picture>
 			</div>
 			<?php
 				break;
 				case "light": ?>
-			<div class="content-primary" <?php echo "style=\"display:inline\""; ?>>
-				<h2>VERA -- Light</h2>
+			<div class="content-primary">
+				<h2>Light</h2>
 				<p>Content will come soon :).</p>
 			</div>
 			<?php
 				break;
 				case "volume": ?>
-			<div class="content-primary" <?php echo "style=\"display:inline\""; ?>>
-				<h2>VERA -- Volume</h2>
+			<div class="content-primary">
+				<h2>Volume</h2>
 				<p>Content will come soon :).</p>
 			</div>
 			<?php
 				break;
+				case "upload": ?>
+			<div class="content-primary">
+				<h2>Upload</h2>
+				<form action="" method="post" enctype="multipart/form-data">
+                    <input name="file" type="file" id="fileA" onchange="fileChange();"/>
+                    <div data-role="controlgroup" data-type="horizontal" width="100%">
+                        <a href="#" class="ui-shadow ui-btn ui-btn-inline ui-btn-icon-left ui-icon-arrow-u" onclick="uploadFile();">Upload</a>
+                        <a href="#" class="ui-shadow ui-btn ui-btn-inline ui-btn-icon-left ui-icon-delete" onclick="uploadAbort();">Abort</a>
+                    </div>
+                </form>
+                <div>
+                    <div id="fileName"></div>
+                    <div id="fileSize"></div>
+                    <div id="fileType"></div>
+                    <progress id="progress" style="margin-top:10px"></progress> <span id="prozent"></span>
+                </div>
+			</div>
+			<?php
+				break;
+				case "download": ?>
+			<div class="content-primary">
+				<h2>Download</h2>
+				<p> <?php
+                if ($handle = opendir('./upload')) {
+                    while (false !== ($file = readdir($handle))) {
+                        if ($file != "." && $file != "..") {
+                            echo "<a href=\"./upload/$file\" target=\"_blank\">$file<br />";
+                        }
+                    }
+                    closedir($handle);
+                } ?> </p>
+			</div>
+			<?php
+				break;
 				default: ?>
-			<div class="content-primary" <?php echo "style=\"display:inline\""; ?>>
+			<div class="content-primary">
 				<h2>Welcome to VERA</h2>
 				<p>VERA or Virtual Enlighted Room Assistent is my personal home automatisation system. At this point it can only view the temperature of my room. The next step is to provide a diagramm over the temperature. After that i would like to write something for controlling my light.</p>
 				<p><?php echo $foo;?></p>
