@@ -98,7 +98,7 @@
                 if ($handle = opendir('./upload')) {
                     while (false !== ($file = readdir($handle))) {
                         if ($file != "." && $file != "..") {
-                            echo "<a href=\"./upload/$file\" target=\"_blank\">$file<br />";
+                            echo "<a href=\"./upload/$file\" target=\"_blank\">$file</a><br />";
                         }
                     }
                     closedir($handle);
