@@ -6,7 +6,7 @@ class temperature {
 		return $result[0];
 	}
 
-	function drawgraph() {
+	function drawgraphHighRes() {
 		include("pChart/class/pData.class.php");
 		include("pChart/class/pDraw.class.php");
 		include("pChart/class/pImage.class.php");
@@ -83,7 +83,7 @@ class temperature {
 		);
 		$myPicture->drawLegend($width-70,55,$Config);
 		//$myPicture->stroke();
-		$myPicture->render("/srv/http/pl4ygr0und/vera/webinterface/temperature-graph.png");
+		$myPicture->render("/srv/http/pl4ygr0und/vera/webinterface/temperature-graph-high-res.png");
 	}
 }
 ?>
