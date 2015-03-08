@@ -1,8 +1,11 @@
 <!DOCTYPE html> 
 <?php
 	include("./temperature.class.php");
+	include("./wgisdone.class.php");
 	$temperature = new temperature();
-	
+	$wgisdone = new wgisdone();
+	$wgisdonewhat = $wgisdone->getWhat();
+	$wgisdonewhen = $wgisdone->getWhen();
 	if (isset($_GET['category']))
         $foo = htmlspecialchars($_GET["category"]);
     else
@@ -35,7 +38,7 @@
 				<li data-icon="home"><a href="./" <?php if($foo == NULL) { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Home</a></li>
 				<li><a href="./?category=heating" <?php if($foo == "heating") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Heating</a></li>
 				<li><a href="./?category=light" <?php if($foo == "light") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Light</a></li>
-				<li><a href="./?category=volume" <?php if($foo == "volume") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Volume</a></li>
+				<li><a href="./?category=isdone" <?php if($foo == "isdone") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>WG Isdone</a></li>
 				<li><a href="./?category=upload" <?php if($foo == "upload") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Upload</a></li>
 				<li><a href="./?category=download" <?php if($foo == "download") { echo "class=\"ui-btn ui-btn-icon-right ui-icon-carat-r ui-btn-active\""; } ?>>Download</a></li>
 				<li class="jqm-close-menu" data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
@@ -65,10 +68,17 @@
 			</div>
 			<?php
 				break;
-				case "volume": ?>
+				case "isdone": ?>
 			<div class="content-primary">
-				<h2>Volume</h2>
-				<p>Content will come soon :).</p>
+				<h2>WG Isdone</h2>
+				<ul data-role="listview" data-inset="true" class="ui-nodisc-icon ui-alt-icon" data-split-icon="plus">
+					<?php for($i = 0; $i < count($wgisdonewhat); $i++) { ?>
+					<li>
+						<a href="#"><?php echo $wgisdonewhat[$i] ?><span class="ui-li-count">1</span></a>
+						<a href="#" data-rel="popup" data-position-to="window" data-transition="pop"></a>
+					</li>
+					<?php } ?>
+				</ul>
 			</div>
 			<?php
 				break;
