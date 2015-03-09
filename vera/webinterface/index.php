@@ -23,6 +23,7 @@
 
 	<script src="./widescreen.js"></script>
 	<script src="./upload.js"></script>
+	<script src="./leds.js"></script>
 	<link rel="stylesheet" type="text/css" href="./widescreen.css">
 </head> 
 <body> 
@@ -64,7 +65,10 @@
 				case "light": ?>
 			<div class="content-primary">
 				<h2>Light</h2>
-				<p>Content will come soon :).</p>
+				<form>
+				    <label for="flip-checkbox-led">Turn LEDs white on/off:</label>
+				    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-led" id="flip-checkbox-led" onchange="flipChangeLed();">
+				</form>
 			</div>
 			<?php
 				break;

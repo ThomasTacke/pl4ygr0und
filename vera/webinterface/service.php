@@ -11,12 +11,10 @@
 	
 	switch($do) {
 		case "dg":
-			echo $do;
 			//echo $temperature->getLastTemperature()."\n";
 			$temperature->drawgraphHighRes();
 			break;
 		case "sleds":
-			echo $do;
 			if (isset($_GET['color']) && isset($_GET['brightness'])) { 
 				$color = htmlspecialchars($_GET["color"]);
 				$brightness = htmlspecialchars($_GET["brightness"]);
