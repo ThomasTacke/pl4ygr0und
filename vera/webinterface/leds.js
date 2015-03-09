@@ -1,13 +1,14 @@
 function flipChangeLed() {
-	var status = 0;
-	if(status === 0) {
+
+	var status = $("#flip-checkbox-led").prop("checked") ? "On" : "Off";
+
+	if(status === "On") {
 		$.ajax({
 			url: "service.php?opts=sleds&color=all&brightness=2000",
 			success: function ( data ) { //function to deal with returned information
 				// So far nothing todo here, but function stub is better then ignoring
 			}
 		});
-		status = 2000;
 	} else {
 		$.ajax({
 			url: "service.php?opts=sleds&color=all&brightness=0",
@@ -15,6 +16,5 @@ function flipChangeLed() {
 				// So far nothing todo here, but function stub is better then ignoring
 			}
 		});
-		status = 0;
 	}
 }
