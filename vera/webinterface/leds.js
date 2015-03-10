@@ -30,7 +30,7 @@ function sliderRed(value) {
 		});
 }
 
-function sliderGreen() {
+function sliderGreen(value) {
 		var myurl = "service.php?opts=sleds&color=green&brightness=";
 		myurl = myurl.concat(value);
 		$.ajax({
@@ -41,7 +41,7 @@ function sliderGreen() {
 		});
 }
 
-function sliderBlue() {
+function sliderBlue(value) {
 		var myurl = "service.php?opts=sleds&color=blue&brightness=";
 		myurl = myurl.concat(value);
 		$.ajax({
