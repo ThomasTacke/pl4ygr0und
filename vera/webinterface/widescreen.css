@@ -11,6 +11,7 @@
 	.jqm-content {
 		position: absolute;
 		left: 17em;	
+		width: 84%;
 	}
 	.jqm-close-menu {
 		visibility: hidden;

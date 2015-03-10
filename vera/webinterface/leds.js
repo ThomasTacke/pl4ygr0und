@@ -18,3 +18,36 @@ function flipChangeLed() {
 		});
 	}
 }
+
+function sliderRed(value) {
+		var myurl = "service.php?opts=sleds&color=red&brightness=";
+		myurl = myurl.concat(value);
+		$.ajax({
+			url: myurl,
+			success: function ( data ) { //function to deal with returned information
+				// So far nothing todo here, but function stub is better then ignoring
+			}
+		});
+}
+
+function sliderGreen() {
+		var myurl = "service.php?opts=sleds&color=green&brightness=";
+		myurl = myurl.concat(value);
+		$.ajax({
+			url: myurl,
+			success: function ( data ) { //function to deal with returned information
+				// So far nothing todo here, but function stub is better then ignoring
+			}
+		});
+}
+
+function sliderBlue() {
+		var myurl = "service.php?opts=sleds&color=blue&brightness=";
+		myurl = myurl.concat(value);
+		$.ajax({
+			url: myurl,
+			success: function ( data ) { //function to deal with returned information
+				// So far nothing todo here, but function stub is better then ignoring
+			}
+		});
+}
