@@ -68,11 +68,11 @@
 			    <label for="flip-checkbox-led">Turn LEDs white on/off:</label>
 			    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-led" id="flip-checkbox-led" onchange="flipChangeLed();">
 			    <label for="slider-red">Red</label>
-			    <input type="range" name="slider-red" id="slider-red" data-highlight="true" min="0" max="2000" value="50" onchange="sliderRed(this.value)">
+			    <input type="range" name="slider-red" id="slider-red" data-highlight="true" min="0" max="2000" value="0" step="100" onchange="sliderRed(this.value)">
 			    <label for="slider-green">Green</label>
-			    <input type="range" name="slider-green" id="slider-green" data-highlight="true" min="0" max="2000" value="50" onchange="sliderGreen(this.value)">
+			    <input type="range" name="slider-green" id="slider-green" data-highlight="true" min="0" max="2000" value="0" step="100" onchange="sliderGreen(this.value)">
 			    <label for="slider-blue">Blue</label>
-			    <input type="range" name="slider-blue" id="slider-blue" data-highlight="true" min="0" max="2000" value="50" onchange="sliderBlue(this.value)">
+			    <input type="range" name="slider-blue" id="slider-blue" data-highlight="true" min="0" max="2000" value="0" step="100" onchange="sliderBlue(this.value)">
 			</div>
 			<?php
 				break;
